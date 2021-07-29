@@ -1,0 +1,16 @@
+{
+	"type": "code",
+	"Name": "More Dry Grass",
+	"Website": "https://github.com/fuami/MoreDryGrass",
+	"ModID": "moredrygrass",
+	"Authors": [
+		"Fuami"
+	],
+	"Contributors": [],
+	"Side": "Universal",
+	"RequiredOnClient": true,
+	"RequiredOnServer": true,
+	"description": "Adds more dry grass!",
+	"version": "0.2.0",
+	"Dependencies": {}
+}

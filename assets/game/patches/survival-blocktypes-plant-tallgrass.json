@@ -1,0 +1,12 @@
+[
+  {
+    "op": "add",
+    "path": "/behaviors",
+    "value": [
+      {
+        "name": "moredrygrass:moredrygrass"
+      }
+    ],
+    "file": "blocktypes/plant/tallgrass.json"
+  }
+]
