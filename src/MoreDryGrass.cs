@@ -46,6 +46,8 @@ namespace moredrygrass.src
 
         public override ItemStack[] GetDrops(IWorldAccessor world, BlockPos pos, IPlayer byPlayer, ref float dropChanceMultiplier, ref EnumHandling handling)
         {
+            ItemStack[] rv = new ItemStack[0];
+
             if (byPlayer != null && drygrass != null)
             {
                 bool enabled = (forScythe && byPlayer.InventoryManager.ActiveTool == EnumTool.Scythe) ||
@@ -76,9 +78,15 @@ namespace moredrygrass.src
                                     * Then, when we have the default result, we'll adjust it
                                     */
 
-                                withinCheck.Value = true;
-                                ItemStack[] rv = blk.GetDrops(world, pos, byPlayer, dropChanceMultiplier);
-                                withinCheck.Value = false;
+                                try
+                                {
+                                    withinCheck.Value = true;
+                                    rv = blk.GetDrops(world, pos, byPlayer, dropChanceMultiplier);
+                                }
+                                finally
+                                {
+                                    withinCheck.Value = false;
+                                }
 
                                 for (int x = 0; x < rv.Length; ++x)
                                 {
@@ -90,14 +98,13 @@ namespace moredrygrass.src
                                 }
 
                                 handling = EnumHandling.PreventDefault;
-                                return rv;
                             }
                         }
                     }
                 }
             }
 
-            return new ItemStack[0];
+            return rv;
         }
 
     }
